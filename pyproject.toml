@@ -1,0 +1,40 @@
+[project]
+name = "code-context-vault"
+version = "0.1.0"
+description = "Indexer for embedding source code into a pgvector database."
+requires-python = ">=3.12"
+dependencies = [
+    "alembic>=1.16.5,<2",
+    "langchain-openai>=1.1.12",
+    "pgvector>=0.3,<1",
+    "psycopg[binary]>=3.2.10,<4",
+    "sqlalchemy>=2.0.43,<3",
+    "tree-sitter>=0.25.2,<1",
+    "tree-sitter-python>=0.25.0,<1",
+    "tree-sitter-javascript>=0.23.0,<1",
+    "tree-sitter-typescript>=0.23.0,<1",
+]
+
+[dependency-groups]
+dev = [
+    "mypy>=1.15.0,<2",
+    "pre-commit>=4.2.0,<5",
+    "pytest>=8.3.0,<9",
+    "ruff>=0.11.0,<1",
+    "pre-commit>=4.5.1,<5",
+    "ipykernel>=7.2.0,<8",
+]
+
+[tool.uv]
+default-groups = ["dev"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
+
+[tool.ruff.format]
+quote-style = "single"
+indent-style = "space"
